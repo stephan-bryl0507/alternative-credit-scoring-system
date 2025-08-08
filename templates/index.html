@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alternative Credit Score</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="menu-icon" id="toggleMenu">&#9776;</div>
+            <ul id="nav-list" class="nav-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/service">Services</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/result"></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact">
+           <h1>Alternative Credit Score</h1>
+            <form action="/submit" method="post">
+                <label>Name:</label><br>
+                <input type="text" name="name" required><br><br>
+
+                <label>Age:</label><br>
+                <input type="number" name="age" required><br><br>
+
+                <label>Monthly Income (₹):</label><br>
+                <input type="number" name="income" required><br><br>
+
+                <label>Credit Usage (%):</label><br>
+                <input type="number" name="usage" required><br><br>
+
+                <label>Repayment History (% on-time):</label><br>
+                <input type="number" name="repayment" required><br><br>
+            </form>
+            <br>
+            <form name="bank-statement-form" method="POST" enctype="multipart/form-data">
+                <label for="bankStatements">Bank Statements</label>
+                <input type="file" id="bankStatements" name="pdf_files" accept="application/pdf" multiple>
+                <button type="submit">Upload</button>
+            </form>
+            <br>
+            <form name="tax-file-form" method="POST" enctype="multipart/form-data">
+                <label for="taxFiles">Tax IT Returns</label>
+                <input type="file" id="taxFiles" name="pdf_files" accept="application/pdf" multiple>
+                <button type="submit">Upload</button>
+            </form>
+            <br>
+            <form name="text-voice-customer-service-file-form" method="POST" enctype="multipart/form-data">
+                <label for="textOrVoiceFiles">Text or Voice Recording(s)</label>
+                <input type="file" id="textOrVoiceFiles" name="pdf_files" accept="application/pdf" multiple>
+                <button type="submit">Upload</button>
+            </form>
+            <br>
+            <form name="servey-interview-file-form" method="POST" enctype="multipart/form-data">
+                <label for="serveyInterviewFiles">Servey/Interview Recordings</label>
+                <input type="file" id="serveyInterviewFiles" name="pdf_files" accept="application/pdf" multiple>
+                <button type="submit">Upload</button>
+            </form>
+            <br>
+            <form name="payslip-file-form" method="POST" enctype="multipart/form-data">
+                <label for="payslip">Payslip</label>
+                <input type="file" id="payslip" name="pdf_files" accept="application/pdf" multiple>
+                <button type="submit">Upload</button>
+            </form>
+            <br>
+            <form>
+                <input type="submit" value="Calculate Score">
+            </form>
+            <br>
+            <button onclick="calculate()">Calculate</button>
+            <br>
+            <h3>Analysis:</h3>
+            <div id="analysis_report_div" style="white-space: pre-wrap;"></div>
+            <br>
+            <h3>Credit score:</h3>
+            <div id="score_div" style="white-space: pre-wrap;"></div>
+        </section>
+
+    </main>
+
+    <footer class="py-2 mt-1 text-center bg-dark text-white fixed-bottom">
+    <div class="container">
+        <p>&copy;<span id="dynamic-year"></span> 2025 AltCreditScore Inc.</p>
+    </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script>
+        async function calculate() {
+
+            const analysis_report_div = document.getElementById("analysis_report_div");
+            analysis_report_div.innerText = "Waiting for response...";
+
+            const score_div = document.getElementById("score_div");
+            score_div.innerText = "Waiting for response...";
+
+            try {
+                const res = await fetch("/calculate");
+
+                const data = await res.json();
+
+                if (data.analysis_report) {
+                    analysis_report_div.innerText = data.analysis_report;
+                } else {
+                    analysis_report_div.innerText = "Error: " + data.error;
+                }
+
+                if (data.score) {
+                    score_div.innerText = data.score;
+                } else {
+                    score_div.innerText = "Error: " + data.error;
+                }
+            } catch (err) {
+                analysis_report_div.innerText = "Error: " + err;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alternative Credit Score</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="menu-icon" id="toggleMenu">&#9776;</div>
+            <ul id="nav-list" class="nav-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/service">Services</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+           <h1>Our Services</h1>
+           <p>We provide credit scoring solution that evaluates loan applicants using alternative data</p>
+        </section>
+
+        <section class="content">
+           <h2>What we Offer</h2>
+           <ul class="services-list">
+            <li><strong>Expert advice</strong></li>
+            <li><strong>Custom Software</strong></li>
+            <li><strong>24/7 support for your operations</strong></li>
+           </ul>
+        </section>
+    </main>
+
+   <footer class="py-2 mt-1 text-center bg-dark text-white fixed-bottom">
+    <div class="container">
+        <p>&copy;<span id="dynamic-year"></span> 2025 AltCreditScore Inc.</p>
+    </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+
+
+</body>
+</html>
