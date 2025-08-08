@@ -54,8 +54,8 @@ Our goal is to build a **credit scoring model** using **alternative data** such 
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/alt-credit-scoring.git
-cd alt-credit-scoring
+git clone https://github.com/stephan-bryl0507/alternative-credit-scoring-system/
+cd alternative-credit-scoring-system
 ```
 
 ### 2. Install Dependencies
