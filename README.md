@@ -48,23 +48,6 @@ Our goal is to build a **credit scoring model** using **alternative data** such 
 
 ## 🗂️ Project Structure
 
-```
-alt-credit-scoring/
-│
-├── data/                  # Simulated or real alternative data
-├── notebooks/             # EDA and ML experiments
-├── src/
-│   ├── ingestion/         # Scripts to load/clean data
-│   ├── models/            # ML model training & evaluation
-│   ├── explainability/    # SHAP, LIME, fairness checks
-│   └── dashboard/         # Streamlit app code
-│
-├── app.py                 # Entry point for dashboard
-├── requirements.txt       # Python dependencies
-├── README.md              # Project overview
-└── LICENSE
-```
-
 ---
 
 ## 🛠️ Getting Started
